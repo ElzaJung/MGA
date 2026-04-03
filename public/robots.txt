@@ -1,0 +1,12 @@
+# MyungGa Korean Catering - Robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://myungga-catering.com/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 10
