@@ -3,6 +3,24 @@ import { ChevronRight, ArrowRight } from "lucide-react";
 
 const menuItems = [
   {
+    category: "Bao",
+    korean: "바오",
+    items: [
+      {
+        name: "MGA Signature Bao",
+        desc: "Steamed fluffy buns filled with glazed pork belly or soy chicken and pickled vegetables",
+        price: "From $15/person",
+        img: "/image/bao.png"
+      },
+      {
+        name: "Bao Box",
+        desc: "A curated box of 3 assorted baos with signature sauces and sides",
+        price: "From $18/person",
+        img: "/image/bao.png"
+      },
+    ]
+  },
+  {
     category: "Chicken & Beer",
     korean: "치킨",
     items: [
@@ -51,18 +69,6 @@ const menuItems = [
     ]
   },
   {
-    category: "Vietnamese",
-    korean: "베트남 음식",
-    items: [
-      {
-        name: "Pho",
-        desc: "Traditional Vietnamese beef noodle soup with aromatic herbs",
-        price: "From $13/person",
-        img: "https://images.unsplash.com/photo-1701480253822-1842236c9a97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwcGhvJTIwYm93bHxlbnwxfHx8fDE3NzQ5MTczODd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-    ]
-  },
-  {
     category: "Chinese Fusion",
     korean: "중식",
     items: [
@@ -87,24 +93,6 @@ const menuItems = [
     ]
   },
   {
-    category: "Thai",
-    korean: "태국",
-    items: [
-      {
-        name: "Red Curry",
-        desc: "Authentic Thai red curry with coconut milk and vegetables",
-        price: "From $14/person",
-        img: "https://images.unsplash.com/photo-1720949579208-70855e23dfc3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aGFpJTIwcmVkJTIwY3Vycnl8ZW58MXx8fHwxNzc0OTc2NzQyfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Green Curry",
-        desc: "Fragrant Thai green curry with fresh herbs and spices",
-        price: "From $14/person",
-        img: "https://images.unsplash.com/photo-1668665772043-bdd32e348998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aGFpJTIwZ3JlZW4lMjBjdXJyeXxlbnwxfHx8fDE3NzQ5MTM4MTh8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-    ]
-  },
-  {
     category: "Korean Street Food",
     korean: "분식",
     items: [
@@ -124,8 +112,21 @@ const menuItems = [
   }
 ];
 
-export function FoodShowcase() {
+interface FoodShowcaseProps {
+  selectedMenuItems: string[];
+  setSelectedMenuItems: (items: string[]) => void;
+}
+
+export function FoodShowcase({ selectedMenuItems = [], setSelectedMenuItems }: FoodShowcaseProps) {
   const [activeTab, setActiveTab] = useState(0);
+
+  const toggleMenuItem = (itemName: string) => {
+    if (selectedMenuItems.includes(itemName)) {
+      setSelectedMenuItems(selectedMenuItems.filter(item => item !== itemName));
+    } else {
+      setSelectedMenuItems([...selectedMenuItems, itemName]);
+    }
+  };
 
   return (
     <section id="menu" className="py-24 md:py-32 bg-[#FAFAF5]">
@@ -140,7 +141,19 @@ export function FoodShowcase() {
             <p className="font-body text-[#1A1A1A]/55 mt-3 max-w-md">
               Every dish is prepared fresh using authentic recipes and premium ingredients sourced from Korean specialty suppliers.
             </p>
+            {selectedMenuItems.length > 0 && (
+              <p className="text-sm text-[#1A1A1A]/50 mt-2 flex items-center gap-2">
+                {selectedMenuItems.length} item{selectedMenuItems.length !== 1 ? 's' : ''} selected
+                <button
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  className="text-xs text-[#FFCB2F] hover:underline"
+                >
+                  View in form ↓
+                </button>
+              </p>
+            )}
           </div>
+
           {/* Category tabs */}
           <div className="reveal reveal-delay-1 flex gap-2 flex-wrap">
             {menuItems.map((cat, i) => (
@@ -161,30 +174,47 @@ export function FoodShowcase() {
 
         {/* Cards */}
         <div className="grid md:grid-cols-2 gap-6">
-          {menuItems[activeTab].items.map((item, i) => (
-            <div
-              key={item.name}
-              className={`reveal reveal-delay-${i + 1} bg-white card-lift overflow-hidden flex flex-col md:flex-row`}
-            >
-              <div className="w-full md:w-48 h-48 md:h-auto flex-shrink-0 overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={`${item.name} - ${item.desc} - MyungGa Korean catering menu item`}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="p-6 flex flex-col justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans]">{item.name}</h3>
-                  <p className="font-body text-sm text-[#1A1A1A]/55 mt-2 leading-relaxed">{item.desc}</p>
+          {menuItems[activeTab].items.map((item, i) => {
+            const isSelected = selectedMenuItems.includes(item.name);
+            return (
+              <div
+                key={item.name}
+                onClick={() => toggleMenuItem(item.name)}
+                className={`reveal reveal-delay-${i + 1} bg-white card-lift overflow-hidden flex flex-col md:flex-row cursor-pointer group`}
+              >
+                <div className="w-full md:w-48 h-48 md:h-auto flex-shrink-0 overflow-hidden">
+                  <img
+                    src={item.img}
+                    alt={`${item.name} - ${item.desc} - MyungGa Korean catering menu item`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 flex flex-col justify-between gap-3 flex-1">
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans] group-hover:text-[#FFCB2F] transition-colors">{item.name}</h3>
+                    <p className="font-body text-sm text-[#1A1A1A]/55 mt-2 leading-relaxed">{item.desc}</p>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleMenuItem(item.name);
+                    }}
+                    className={`mt-4 px-3 py-1.5 text-xs transition-all duration-300 ${isSelected
+                      ? "text-[#FFCB2F] underline opacity-100"
+                      : "text-[#1A1A1A]/50 hover:text-[#FFCB2F] md:opacity-0 md:group-hover:opacity-100"
+                      }`}
+                    title={isSelected ? "Click to remove from inquiry" : "Click to add to inquiry"}
+                  >
+                    {isSelected ? "Added" : "Add +"}
+                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-10 text-center reveal">
-          <p className="font-body text-[#1A1A1A]/70 mb-6 text-lg">
+          <p className="font-body text-[#1A1A1A]/70 mb-6 text-xl">
             ...and much more! Tell us what you'd like, and we'll make it happen.
           </p>
         </div>

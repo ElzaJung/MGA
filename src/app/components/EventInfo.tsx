@@ -1,4 +1,4 @@
-import { Users, MapPin, Truck } from "lucide-react";
+import { Users, Truck, ChefHat } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const services = [
@@ -66,7 +66,7 @@ export function EventInfo() {
         </div>
 
         {/* Info Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white p-8 border-2 border-[#FFCB2F]/30 text-center hover:border-[#FFCB2F] transition-colors">
             <Users className="w-12 h-12 mx-auto mb-4 text-[#FFCB2F]" />
             <h3 className="font-display text-xl mb-3 text-[#1A1A1A] font-bold font-[Plus_Jakarta_Sans]">Minimum Order</h3>
@@ -76,18 +76,18 @@ export function EventInfo() {
           </div>
 
           <div className="bg-white p-8 border-2 border-[#FFCB2F]/30 text-center hover:border-[#FFCB2F] transition-colors">
-            <MapPin className="w-12 h-12 mx-auto mb-4 text-[#FFCB2F]" />
-            <h3 className="font-display text-xl mb-3 text-[#1A1A1A] font-bold font-[Plus_Jakarta_Sans]">Service Area</h3>
+            <Truck className="w-12 h-12 mx-auto mb-4 text-[#FFCB2F]" />
+            <h3 className="font-display text-xl mb-3 text-[#1A1A1A] font-bold font-[Plus_Jakarta_Sans]">Free Delivery</h3>
             <p className="font-body text-[#1A1A1A]/60">
-              Waterloo, Hamilton, Toronto and GTA<br />
+              Free Delivery and pickup available<br />
             </p>
           </div>
 
           <div className="bg-white p-8 border-2 border-[#FFCB2F]/30 text-center hover:border-[#FFCB2F] transition-colors">
-            <Truck className="w-12 h-12 mx-auto mb-4 text-[#FFCB2F]" />
-            <h3 className="font-display text-xl mb-3 text-[#1A1A1A] font-bold font-[Plus_Jakarta_Sans]">Delivery</h3>
+            <ChefHat className="w-12 h-12 mx-auto mb-4 text-[#FFCB2F]" />
+            <h3 className="font-display text-xl mb-3 text-[#1A1A1A] font-bold font-[Plus_Jakarta_Sans]">Customizable Menu</h3>
             <p className="font-body text-[#1A1A1A]/60">
-              Delivery and pickup available<br />
+              We can make anything you want<br />
             </p>
           </div>
         </div>

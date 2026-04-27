@@ -13,9 +13,11 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3">
-            
-            <span className="font-display text-2xl text-[#1A1A1A] font-bold">MyungGA</span>
-          </Link>
+
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-2xl text-[#1A1A1A] font-bold">MyungGA</span>
+              <span className="font-body text-xs text-[#1A1A1A]/50 tracking-wide">Korean Restaurant</span>
+            </div>          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -25,14 +27,14 @@ export function Navigation() {
             >
               Services
             </button>
-            
+
             <button
               onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}
               className="font-body text-base transition-colors text-[#1A1A1A]/60 hover:text-[#1A1A1A]"
             >
               Menu
             </button>
-            
+
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="btn-primary"

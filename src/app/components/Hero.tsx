@@ -4,34 +4,19 @@ import { useState, useEffect } from "react";
 const HERO_IMG = "https://images.unsplash.com/photo-1661366394743-fe30fe478ef7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxLb3JlYW4lMjBmb29kJTIwY2F0ZXJpbmclMjBzcHJlYWR8ZW58MXx8fHwxNzc1MDIyNTM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
 const cuisines = [
-  "Korean Chicken",
-  "Vietnamese",
-  "Chinese Fusion",
-  "Thai",
-  "Korean"
+  "Korean",
 ];
 
 export function Hero() {
-  const [currentCuisine, setCurrentCuisine] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentCuisine((prev) => (prev + 1) % cuisines.length);
-        setIsTransitioning(false);
-      }, 300);
-    }, 2500);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+    <section className="relative min-h-[90vh] flex items-center bg-[#FAFAF5] overflow-hidden pt-20 md:pt-0">
+      {/* Dynamic Background Element */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFCB2F]/5 -skew-x-12 translate-x-1/4" />
+
       {/* Hangul watermark */}
       <span
-        className="hangul-watermark hidden lg:block absolute -left-8 top-1/2 -translate-y-1/2 text-[22vw] select-none pointer-events-none text-[#fffcf3]"
+        className="hangul-watermark hidden lg:block absolute -left-8 top-1/2 -translate-y-1/2 text-[22vw] select-none pointer-events-none text-[#DADAC8]/[0.55]"
         aria-hidden
       >
         명가
@@ -47,43 +32,35 @@ export function Hero() {
           <h1 className="relative z-10 font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-[#1A1A1A] animate-fade-up animate-fade-up-delay-1 font-[Plus_Jakarta_Sans]">
             Authentic
             <br />
-            <em
-              className={`not-italic text-[#FFCB2F] inline-block transition-all duration-500 origin-center ${isTransitioning ? 'opacity-0 scale-y-0' : 'opacity-100 scale-y-100'
-                }`}
-              style={{
-                transform: isTransitioning ? 'perspective(1000px) rotateX(90deg)' : 'perspective(1000px) rotateX(0deg)',
-                transition: 'all 0.5s ease-in-out'
-              }}
-            >
-              {cuisines[currentCuisine]}
-            </em>
+            <em className="not-italic text-[#FFCB2F]">Korean</em>
             <br />
             Flavours
           </h1>
 
-          <p className="font-body text-base md:text-lg text-[#1A1A1A]/60 max-w-sm leading-relaxed animate-fade-up animate-fade-up-delay-2">
-            Customized catering for school events, corporate events, sports day, picnic and special bento box.
+          <p className="font-body text-balance text-[#1A1A1A]/60 text-lg md:text-xl max-w-lg animate-fade-up animate-fade-up-delay-2 leading-relaxed">
+            Elevating events with premium catering services. From traditional delicacies to modern Asian fusion, we bring the heart of Seoul to Ontario.
           </p>
 
-          <div className="flex flex-wrap gap-3 animate-fade-up animate-fade-up-delay-3">
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-primary"
-            >
-              Inquiry <ArrowRight size={16} />
-            </button>
+          <div className="flex flex-wrap gap-4 animate-fade-up animate-fade-up-delay-3">
             <button
               onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-outline"
+              className="btn-primary"
             >
-              View Menu
+              EXPLORE MENU
+            </button>
+            <button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] font-body font-bold text-sm tracking-widest hover:bg-[#1A1A1A] hover:text-white transition-all transform hover:translate-y-[-2px] active:translate-y-0"
+            >
+              GET A QUOTE
             </button>
           </div>
 
-          {/* Stats */}
+          {/* Stats/Badges */}
           <div className="flex gap-8 pt-4 border-t border-[#1A1A1A]/10 animate-fade-up animate-fade-up-delay-4">
             {[
               { num: "20+", label: "Years Experience" },
+              { num: "✓", label: "Korean Food License" },
             ].map(({ num, label }) => (
               <div key={label} className="flex flex-col">
                 <span className="font-display text-2xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans]">{num}</span>

@@ -276,9 +276,7 @@
 .hangul-watermark {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 900;
-  color: #FAFAF5;
   line-height: 1;
-  z-index: 0;
 }
 
 /* Card lift effect */

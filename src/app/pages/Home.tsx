@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { Hero } from "../components/Hero";
-import { OurService } from "../components/OurService";
 import { About } from "../components/About";
 import { FoodShowcase, CustomCreationsBanner } from "../components/FoodShowcase";
 import { EventInfo } from "../components/EventInfo";
@@ -9,6 +9,12 @@ import { Location } from "../components/Location";
 import { SEO, myungGaStructuredData } from "../components/SEO";
 
 export function Home() {
+  const [selectedMenuItems, setSelectedMenuItems] = useState<string[]>([]);
+
+  const removeMenuItem = (itemToRemove: string) => {
+    setSelectedMenuItems(selectedMenuItems.filter(item => item !== itemToRemove));
+  };
+
   return (
     <>
       <SEO
@@ -21,11 +27,17 @@ export function Home() {
       <div>
         <Hero />
         <EventInfo />
-        <FoodShowcase />
+        <FoodShowcase 
+          selectedMenuItems={selectedMenuItems} 
+          setSelectedMenuItems={setSelectedMenuItems} 
+        />
         <CustomCreationsBanner/>
         <About />
 
-        <HowToOrder />
+        <HowToOrder 
+          selectedMenuItems={selectedMenuItems}
+          removeMenuItem={removeMenuItem}
+        />
         <Reviews />
         <Location />
       </div>

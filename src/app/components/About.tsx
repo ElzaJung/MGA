@@ -21,12 +21,12 @@ export function About() {
 
           <div className="space-y-6 text-md text-[#1A1A1A]/70 font-body leading-relaxed max-w-4xl mx-auto">
             <p>
-              MyungGA Catering is now serving across Waterloo, Hamilton, Toronto and GTA. We specialize in authentic Korean cuisine and a wide variety of Asian dishes. From Korean classics to Thai, Vietnamese, and other Asian favourites, we can prepare almost any menu to suit your event.
+              MyungGA Catering is now serving across Waterloo, Hamilton, Toronto and GTA. We specialize in authentic Korean cuisine and a wide variety of traditional dishes. From Korean classics to modern favorites, we can prepare the perfect menu to suit your event.
             </p>
 
 
             <p>
-              At MyungGA, we focus on fresh ingredients, balanced flavours, and healthy preparation. Our goal is simple: to serve food that is not only delicious but also made with care and quality you can trust. We're not just caterers—we cook with <span className="font-medium text-[#1A1A1A] font-korean">정 (Jeong)</span>, a Korean value that represents genuine care, warmth, and sincerity toward others. It means preparing food thoughtfully, using quality ingredients, and treating every event as if we were cooking for our own family.
+              At MyungGA, we focus on fresh ingredients, balanced flavours, and healthy preparation. Our goal is simple: to serve food that is not only delicious but also made with care and quality you can trust. We're not just caterers—we cook with <span className="font-medium text-[#1A1A1A] font-korean">情(Jeong)</span>, a Korean value that represents genuine care, warmth, and sincerity toward others. It means preparing food thoughtfully, using quality ingredients, and treating every event as if we were cooking for our own family.
             </p>
 
             <p className="text-md font-medium text-[#1A1A1A]">
