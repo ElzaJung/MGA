@@ -1,8 +1,12 @@
 import { Link, useLocation } from "react-router";
-import { ChefHat, Menu, X } from "lucide-react";
+import { ChefHat, Menu, X, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
-export function Navigation() {
+interface NavigationProps {
+  selectedMenuItems?: string[];
+}
+
+export function Navigation({ selectedMenuItems = [] }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -35,25 +39,49 @@ export function Navigation() {
               Menu
             </button>
 
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-primary"
-            >GET A QUOTE</button>
+            {selectedMenuItems.length > 0 ? (
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-primary flex items-center gap-2"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                <span className="font-bold">{selectedMenuItems.length}</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-primary"
+              >GET A QUOTE</button>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile Menu Button & Cart */}
+          <div className="md:hidden flex items-center gap-4">
+            <button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="relative p-2"
+              aria-label="View cart"
+            >
+              <ShoppingCart className="w-6 h-6 text-[#1A1A1A]" />
+              {selectedMenuItems.length > 0 && (
+                <span className="absolute top-0 right-0 w-5 h-5 bg-[#FFCB2F] text-[#1A1A1A] text-xs font-bold rounded-full flex items-center justify-center translate-x-1 -translate-y-1 border-2 border-white">
+                  {selectedMenuItems.length}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

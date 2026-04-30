@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useOutletContext } from "react-router";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
 import { FoodShowcase, CustomCreationsBanner } from "../components/FoodShowcase";
@@ -9,7 +9,10 @@ import { Location } from "../components/Location";
 import { SEO, myungGaStructuredData } from "../components/SEO";
 
 export function Home() {
-  const [selectedMenuItems, setSelectedMenuItems] = useState<string[]>([]);
+  const { selectedMenuItems, setSelectedMenuItems } = useOutletContext<{
+    selectedMenuItems: string[];
+    setSelectedMenuItems: React.Dispatch<React.SetStateAction<string[]>>;
+  }>();
 
   const removeMenuItem = (itemToRemove: string) => {
     setSelectedMenuItems(selectedMenuItems.filter(item => item !== itemToRemove));

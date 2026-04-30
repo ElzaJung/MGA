@@ -1,10 +1,43 @@
 import { Award } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export function About() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Pancake (Left)
+  const pancakeX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-400, 0, 0, -400]);
+  const pancakeRotate = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-180, 6, 6, -180]);
+  const pancakeOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.3, 0.3, 0]);
+
+  // Kimbap (Right)
+  const kimbapX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [400, 0, 0, 400]);
+  const kimbapRotate = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [180, -12, -12, 180]);
+  const kimbapOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.3, 0.3, 0]);
+
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-[#FAFAF5] relative overflow-hidden" aria-labelledby="about-heading">
+    <section ref={containerRef} className="py-20 px-6 bg-gradient-to-b from-white to-[#FAFAF5] relative overflow-hidden" aria-labelledby="about-heading">
+      {/* Background Decor - Left Side */}
+      <motion.img
+        src="/image/pancake.png"
+        alt=""
+        aria-hidden="true"
+        className="hidden md:block absolute top-1/2 -left-32 -translate-y-1/2 md:w-[650px] object-contain pointer-events-none z-0"
+        style={{ x: pancakeX, rotate: pancakeRotate, opacity: pancakeOpacity }}
+      />
+
       {/* Background Decor - Right Side */}
-      <img src="/image/wind.png" alt="" aria-hidden="true" className="hidden md:block absolute top-1/2 -right-16 -translate-y-1/2 w-64 md:w-[600px] object-contain opacity-20 pointer-events-none z-0" />
+      <motion.img
+        src="/image/kimbap.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute top-1/2 -right-[30vw] md:-right-75 -translate-y-1/2 w-[310vw] md:w-[950px] max-w-none object-contain pointer-events-none z-0"
+        style={{ x: kimbapX, rotate: kimbapRotate, opacity: kimbapOpacity }}
+      />
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12">
@@ -21,7 +54,7 @@ export function About() {
 
           <div className="space-y-6 text-md text-[#1A1A1A]/70 font-body leading-relaxed max-w-4xl mx-auto">
             <p>
-              MyungGA Catering is now serving across Waterloo, Hamilton, Toronto and GTA. We specialize in authentic Korean cuisine and a wide variety of traditional dishes. From Korean classics to modern favorites, we can prepare the perfect menu to suit your event.
+              MyungGA Catering is now serving across Waterloo and Kitchener. We specialize in authentic Korean cuisine and a wide variety of traditional dishes. From Korean classics to modern favorites, we can prepare the perfect menu to suit your event.
             </p>
 
 

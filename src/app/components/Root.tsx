@@ -1,9 +1,10 @@
 import { Outlet } from "react-router";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function Root() {
+  const [selectedMenuItems, setSelectedMenuItems] = useState<string[]>([]);
   useEffect(() => {
     // Set document language
     document.documentElement.lang = "en";
@@ -28,9 +29,9 @@ export function Root() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
+      <Navigation selectedMenuItems={selectedMenuItems} />
       <main className="flex-1">
-        <Outlet />
+        <Outlet context={{ selectedMenuItems, setSelectedMenuItems }} />
       </main>
       <Footer />
     </div>

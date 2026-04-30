@@ -27,7 +27,7 @@ export function Footer() {
       </div>
       <div className="container mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
         <p className="font-body text-xs text-white/25">
-          © 2026 MyungGA Catering. All rights reserved.
+          © 2026 MyungGA Korean Restaurant. All rights reserved.
         </p>
       </div>
     </footer>

@@ -1,116 +1,7 @@
 import { useState } from "react";
 import { ChevronRight, ArrowRight } from "lucide-react";
 
-const menuItems = [
-  {
-    category: "Bao",
-    korean: "바오",
-    items: [
-      {
-        name: "MGA Signature Bao",
-        desc: "Steamed fluffy buns filled with glazed pork belly or soy chicken and pickled vegetables",
-        price: "From $15/person",
-        img: "/image/bao.png"
-      },
-      {
-        name: "Bao Box",
-        desc: "A curated box of 3 assorted baos with signature sauces and sides",
-        price: "From $18/person",
-        img: "/image/bao.png"
-      },
-    ]
-  },
-  {
-    category: "Chicken & Beer",
-    korean: "치킨",
-    items: [
-      {
-        name: "MGA Chicken Box",
-        desc: "Double-fried crispy chicken with golden perfection",
-        price: "From $14/person",
-        img: "https://images.unsplash.com/photo-1644203542635-e34075350a79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBmcmllZCUyMGNoaWNrZW4lMjBjcmlzcHl8ZW58MXx8fHwxNzc0OTc1OTIzfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Yangnyeom Chicken",
-        desc: "Sweet and spicy Korean-style chicken with gochujang glaze",
-        price: "From $15/person",
-        img: "https://images.unsplash.com/photo-1734987942068-a1a459d65d3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBjaGlja2VuJTIwd2luZ3MlMjBzYXVjZXxlbnwxfHx8fDE3NzQ5NzY3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Soy Garlic Chicken",
-        desc: "Savory chicken glazed with soy sauce and garlic",
-        price: "From $14/person",
-        img: "https://images.unsplash.com/photo-1706288586330-9766c1956daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb3klMjBnYXJsaWMlMjBjaGlja2VuJTIwa29yZWFufGVufDF8fHx8MTc3NDk3Njc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-    ]
-  },
-  {
-    category: "Korean Traditional",
-    korean: "한식",
-    items: [
-      {
-        name: "Bbyujim (Braised Pork Ribs)",
-        desc: "Tender pork ribs slow-braised in traditional Korean spices",
-        price: "From $22/person",
-        img: "https://images.unsplash.com/photo-1687966699414-095ca9c35593?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFpc2VkJTIwcG9yayUyMHJpYnMlMjBrb3JlYW58ZW58MXx8fHwxNzc0OTc2NzQwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Japchae",
-        desc: "Stir-fried glass noodles with vegetables and your choice of protein",
-        price: "From $12/person",
-        img: "https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBqYXBjaGFlJTIwZ2xhc3MlMjBub29kbGVzfGVufDF8fHx8MTc3NDk3NTkxOXww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Kimchi Pancake",
-        desc: "Crispy savory pancake made with kimchi and green onions",
-        price: "From $8/person",
-        img: "https://images.unsplash.com/photo-1676874566453-06335e4ae97d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBraW1jaGklMjBwYW5jYWtlJTIwamVvbnxlbnwxfHx8fDE3NzQ5NzU5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-    ]
-  },
-  {
-    category: "Chinese Fusion",
-    korean: "중식",
-    items: [
-      {
-        name: "Jjajangmyeon",
-        desc: "Korean-Chinese black bean noodles with vegetables and pork",
-        price: "From $11/person",
-        img: "https://images.unsplash.com/photo-1626803774007-f92c2c32cbe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqamFqYW5nbXllb24lMjBibGFjayUyMGJlYW4lMjBub29kbGVzfGVufDF8fHx8MTc3NDk3Njc0MXww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Jjampong",
-        desc: "Spicy seafood noodle soup with vegetables in a rich broth",
-        price: "From $13/person",
-        img: "https://images.unsplash.com/photo-1749293253083-e5f2a48de33b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqamFtcG9uZyUyMHNwaWN5JTIwc2VhZm9vZCUyMG5vb2RsZXN8ZW58MXx8fHwxNzc0OTc2NzQxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Tangsuyuk",
-        desc: "Crispy sweet and sour pork with vegetables in a tangy sauce",
-        price: "From $16/person",
-        img: "https://images.unsplash.com/photo-1623689043695-aec9746be500?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2VldCUyMHNvdXIlMjBwb3JrJTIwY2hpbmVzZXxlbnwxfHx8fDE3NzQ5NzY3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-    ]
-  },
-  {
-    category: "Korean Street Food",
-    korean: "분식",
-    items: [
-      {
-        name: "Gimbap",
-        desc: "Korean rice rolls filled with vegetables, egg, and protein",
-        price: "From $9/person",
-        img: "https://images.unsplash.com/photo-1656428254987-45d97432714b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBnaW1iYXAlMjBraW1iYXAlMjByb2xsfGVufDF8fHx8MTc3NDk3NTkyM3ww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        name: "Tteokbokki",
-        desc: "Spicy rice cakes in gochugaru sauce with fish cake and vegetables",
-        price: "From $10/person",
-        img: "https://images.unsplash.com/photo-1679581083578-94eae6e8d7a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjB0dGVva2Jva2tpJTIwcmljZSUyMGNha2VzfGVufDF8fHx8MTc3NDk0Mjc0MXww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-    ]
-  }
-];
+import menuItems from "../menu.json";
 
 interface FoodShowcaseProps {
   selectedMenuItems: string[];
@@ -141,17 +32,6 @@ export function FoodShowcase({ selectedMenuItems = [], setSelectedMenuItems }: F
             <p className="font-body text-[#1A1A1A]/55 mt-3 max-w-md">
               Every dish is prepared fresh using authentic recipes and premium ingredients sourced from Korean specialty suppliers.
             </p>
-            {selectedMenuItems.length > 0 && (
-              <p className="text-sm text-[#1A1A1A]/50 mt-2 flex items-center gap-2">
-                {selectedMenuItems.length} item{selectedMenuItems.length !== 1 ? 's' : ''} selected
-                <button
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="text-xs text-[#FFCB2F] hover:underline"
-                >
-                  View in form ↓
-                </button>
-              </p>
-            )}
           </div>
 
           {/* Category tabs */}
@@ -199,9 +79,9 @@ export function FoodShowcase({ selectedMenuItems = [], setSelectedMenuItems }: F
                       e.stopPropagation();
                       toggleMenuItem(item.name);
                     }}
-                    className={`mt-4 px-3 py-1.5 text-xs transition-all duration-300 ${isSelected
-                      ? "text-[#FFCB2F] underline opacity-100"
-                      : "text-[#1A1A1A]/50 hover:text-[#FFCB2F] md:opacity-0 md:group-hover:opacity-100"
+                    className={`mt-4 px-3 py-1.5 text-xs transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 ${isSelected
+                      ? "text-[#FFCB2F] underline"
+                      : "text-[#1A1A1A]/50 hover:text-[#FFCB2F]"
                       }`}
                     title={isSelected ? "Click to remove from inquiry" : "Click to add to inquiry"}
                   >
@@ -246,7 +126,7 @@ export function CustomCreationsBanner() {
         </div>
         <button
           onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-          className="flex-shrink-0 btn-outline bg-[#1A1A1A] text-white border-[#1A1A1A] hover:bg-[#1A1A1A]/90 hover:text-white text-sm"
+          className="flex-shrink-0 btn-outline bg-[#1A1A1A] text-white border-[#1A1A1A] text-sm"
         >
           Inquiry <ArrowRight size={14} />
         </button>
