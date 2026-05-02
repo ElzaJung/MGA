@@ -13,12 +13,27 @@ const cuisines = [
 
 export function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [roofKey, setRoofKey] = useState(Date.now());
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 4000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const GIF_DURATION = 200; // Estimated duration of the roof.gif animation
+    const PAUSE_DURATION = 20000; // 20 seconds pause
+
+    const runCycle = () => {
+      // Refresh the GIF by updating the key
+      setRoofKey(Date.now());
+    };
+
+    const interval = setInterval(runCycle, GIF_DURATION + PAUSE_DURATION);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -64,7 +79,12 @@ export function Hero() {
         {/* Left: Text */}
         <div className="flex flex-col gap-5 items-center text-center md:items-start md:text-left md:pl-12 lg:pl-20">
           <div className="animate-fade-up relative z-0 md:-ml-13 lg:-ml-20 scale-[1] md:scale-[1.1] lg:scale-100 origin-center md:origin-left">
-            <img src="/image/roof5.png" alt="Traditional Roof Design" className="w-full max-w-none object-fill object-center md:object-left mx-auto md:mx-0 -mb-10 md:-mb-3 lg:-mb-10" />
+            <img
+              key={roofKey}
+              src={`/image/roof.gif?v=${roofKey}`}
+              alt="Traditional Roof Design"
+              className="w-full max-w-none object-fill object-center md:object-left mx-auto md:mx-0 -mb-10 md:-mb-3 lg:-mb-10"
+            />
           </div>
 
           <h1 className="relative z-10 font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-[#1A1A1A] animate-fade-up animate-fade-up-delay-1 font-[Plus_Jakarta_Sans]">
@@ -95,24 +115,15 @@ export function Hero() {
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FFCB2F] z-20" />
             </div>
 
-            {/* 인장 stamp - bottom right overlap */}
+            {/* 인장 stamp - bottom right overlap 
             <img
               src="/image/injang.png"
               alt="MyungGA seal"
               className="absolute -bottom-6 -right-4 w-20 h-20 object-contain opacity-90 z-30 pointer-events-none"
             />
+            */}
 
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
-              {HERO_IMAGES.map((_, idx) => (
-                <img
-                  key={`dot-mobile-${idx}`}
-                  src="/image/half circle.png"
-                  alt=""
-                  className={`w-4 h-4 object-contain transition-all duration-300 ${currentImage === idx ? 'opacity-100 scale-125' : 'opacity-30 grayscale'
-                    }`}
-                />
-              ))}
-            </div>
+
           </div>
 
           <p className="font-body text-balance text-[#1A1A1A]/60 text-lg md:text-xl max-w-lg animate-fade-up animate-fade-up-delay-2 leading-relaxed mx-auto md:mx-0">
