@@ -6,8 +6,13 @@ export function Footer() {
     <footer className="bg-[#1A1A1A] py-12">
       <div className="container flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div>
-          <div className="flex flex-col leading-none">
+          <div className="flex items-end gap-1.5 leading-none">
             <span className="font-display text-xl font-bold text-white">MyungGA</span>
+            <img
+              src="/image/injang.png"
+              alt="MyungGA seal"
+              className="w-[19px] h-[19px] object-contain opacity-80 mb-[1px]"
+            />
           </div>
           <p className="font-body text-xs text-white/30 mt-3 max-w-xs leading-relaxed">
             Authentic food crafted for your most memorable moments.

@@ -230,9 +230,9 @@
 }
 
 .btn-primary:hover {
-  background-color: #5a626e;
+  background-color: #6c7e9b;
   color: #ffffff;
-  border-color: #5a626e;
+  border-color: #6c7e9b;
   transform: translateY(-2px);
 }
 
@@ -252,9 +252,9 @@
 }
 
 .btn-outline:hover {
-  background-color: #5a626e;
+  background-color: #6c7e9b;
   color: #ffffff;
-  border-color: #5a626e;
+  border-color: #6c7e9b;
 }
 
 /* Pill tag */
@@ -282,7 +282,6 @@
 .hangul-watermark {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 900;
-  line-height: 1;
 }
 
 /* Card lift effect */

@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "MyungGa Korean Catering - Authentic Asian Cuisine for Weddings, Parties & Corporate Events",
-  description = "Premium Korean and Asian catering services with 20+ years experience. Specializing in authentic Korean, Vietnamese, Chinese fusion, and Thai cuisine for weddings, parties, and corporate events in Ontario.",
-  keywords = "Korean catering, Asian catering, wedding catering, corporate catering, party catering, authentic Korean food, Vietnamese catering, Chinese fusion catering, Thai catering, galbi-jjim, japchae, pho, jjajangmyeon, Ontario catering, event catering",
+  title = "MyungGA Korean Restaurant & Catering - Authentic Korean Cuisine for School, Corporate, and Special Events",
+  description = "Premium Korean catering services with 20+ years experience. Serving Waterloo, Ontario.",
+  keywords = "Korean catering, Asian catering, Waterloo ontario catering, authentic Korean food",
   canonical,
   ogType = "website",
   ogImage = "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1200",

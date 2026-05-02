@@ -71,7 +71,7 @@ export function EventInfo() {
             <Users className="w-12 h-12 mx-auto mb-4 text-[#FFCB2F]" />
             <h3 className="font-display text-xl mb-3 text-[#1A1A1A] font-bold font-[Plus_Jakarta_Sans]">Minimum Order</h3>
             <p className="font-body text-[#1A1A1A]/60">
-              CA $300+
+              CA $200+
             </p>
           </div>
 

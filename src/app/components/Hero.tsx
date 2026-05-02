@@ -2,10 +2,9 @@ import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1661366394743-fe30fe478ef7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxLb3JlYW4lMjBmb29kJTIwY2F0ZXJpbmclMjBzcHJlYWR8ZW58MXx8fHwxNzc1MDIyNTM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBqYXBjaGFlJTIwZ2xhc3MlMjBub29kbGVzfGVufDF8fHx8MTc3NDk3NTkxOXww&ixlib=rb-4.1.0&q=80&w=1080",
-  "https://images.unsplash.com/photo-1644203542635-e34075350a79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBmcmllZCUyMGNoaWNrZW4lMjBjcmlzcHl8ZW58MXx8fHwxNzc0OTc1OTIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-  "https://images.unsplash.com/photo-1656428254987-45d97432714b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBnaW1iYXAlMjBraW1iYXAlMjByb2xsfGVufDF8fHx8MTc3NDk3NTkyM3ww&ixlib=rb-4.1.0&q=80&w=1080"
+  "/image/menu/BB124E37-247A-4E9E-8C8A-6DDF51D610C8_1_105_c.jpeg",
+  "/image/menu/23DFA511-2707-4ADA-948F-76D090BC6F9B_1_201_a.jpeg",
+  "/image/menu/DF801FE4-8BD7-4544-ADBC-BE82AEA215BF_1_201_a.jpeg",
 ];
 
 const cuisines = [
@@ -23,7 +22,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-[#FAFAF5] overflow-hidden pt-20 md:pt-0">
+    <section className="relative min-h-[90vh] flex items-center bg-[#FAFAF5] overflow-hidden pt-0 md:pt-8 lg:pt-0 pb-0 md:pb-10 lg:pb-10">
       {/* Decorative Background - Half Circles (Staggered Pattern) */}
       <div
         className="absolute inset-0 z-0 pointer-events-none opacity-[0.25]"
@@ -34,12 +33,27 @@ export function Hero() {
         }}
       />
 
-      {/* Dynamic Background Element */}
+      {/* Dynamic Background Element 
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFCB2F]/7 -skew-x-12 translate-x-1/4" />
+      */}
 
       {/* Hangul watermark */}
+      {/*style={{
+          //background: 'linear-gradient(135deg, #6c7e9b 0%, #FFCB2F 100%)',
+          background: 'linear-gradient(135deg, #FFCB2F 0%, #6c7e9b 100%)',
+
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          opacity: 0.13
+        }}
+        
+        [#DADAC8]/[0.35]
+        */}
+
       <span
-        className="hangul-watermark hidden lg:block absolute -left-8 top-1/2 -translate-y-1/2 text-[22vw] select-none pointer-events-none text-[#DADAC8]/[0.35]"
+        className="hangul-watermark hidden lg:block absolute -left-8 top-1/2 -translate-y-1/2 text-[22vw] select-none pointer-events-none text-[#DADAC8]/[0.65]"
+
         aria-hidden
       >
         명가
@@ -48,9 +62,9 @@ export function Hero() {
 
       <div className="container relative z-10 grid md:grid-cols-2 gap-16 lg:gap-24 items-center py-20 md:py-0">
         {/* Left: Text */}
-        <div className="flex flex-col gap-3 items-center text-center md:items-start md:text-left md:pl-12 lg:pl-20">
-          <div className="animate-fade-up relative z-0 -mb-4 md:-mb-8 md:-ml-18 lg:-ml-32">
-            <img src="/image/roof3.png" alt="Traditional Roof Design" className="w-full max-w-none object-fill object-center md:object-left mx-auto md:mx-0 mb-5" />
+        <div className="flex flex-col gap-5 items-center text-center md:items-start md:text-left md:pl-12 lg:pl-20">
+          <div className="animate-fade-up relative z-0 md:-ml-13 lg:-ml-20 scale-[1] md:scale-[1.1] lg:scale-100 origin-center md:origin-left">
+            <img src="/image/roof5.png" alt="Traditional Roof Design" className="w-full max-w-none object-fill object-center md:object-left mx-auto md:mx-0 -mb-10 md:-mb-3 lg:-mb-10" />
           </div>
 
           <h1 className="relative z-10 font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-[#1A1A1A] animate-fade-up animate-fade-up-delay-1 font-[Plus_Jakarta_Sans]">
@@ -62,7 +76,7 @@ export function Hero() {
           </h1>
 
           {/* Mobile Slideshow: Only visible on mobile, between title and description */}
-          <div className="md:hidden relative w-full max-w-[300px] mx-auto my-8 animate-fade-up animate-fade-up-delay-2">
+          <div className="md:hidden relative w-full max-w-[350px] animate-fade-up animate-fade-up-delay-2">
             {/* Frame */}
             {/*<div className="block md:hidden absolute -inset-6 z-0 pointer-events-none translate-y-[15px]">
               <img src="/image/frame1.png" alt="" className="w-full object-fill opacity-90" />
@@ -80,6 +94,13 @@ export function Hero() {
               ))}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FFCB2F] z-20" />
             </div>
+
+            {/* 인장 stamp - bottom right overlap */}
+            <img
+              src="/image/injang.png"
+              alt="MyungGA seal"
+              className="absolute -bottom-6 -right-4 w-20 h-20 object-contain opacity-90 z-30 pointer-events-none"
+            />
 
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
               {HERO_IMAGES.map((_, idx) => (
@@ -106,7 +127,7 @@ export function Hero() {
             </button>
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] font-body font-bold text-sm tracking-widest hover:bg-[#5a626e] hover:border-[#5a626e] hover:text-white transition-all transform hover:translate-y-[-2px] active:translate-y-0"
+              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] font-body font-bold text-sm tracking-widest hover:bg-[#6c7e9b] hover:border-[#6c7e9b] hover:text-white transition-all transform hover:translate-y-[-2px] active:translate-y-0"
             >
               GET A QUOTE
             </button>
@@ -129,11 +150,11 @@ export function Hero() {
         {/* Right: Image Slideshow (Desktop Only) */}
         <div className="hidden md:block relative animate-fade-up animate-fade-up-delay-2 mt-8 md:mt-0">
           {/* Frame */}
-          {/* To move the frame further away from the top (down), increase the translate-y-[50px] value. 
+          {/*To move the frame further away from the top (down), increase the translate-y-[50px] value. 
               To move it up, use a negative value like -translate-y-[50px] */}
-          {/*<div className="hidden sm:block lg:block absolute -inset-12 md:-inset-11 lg:-inset-10 z-0 pointer-events-none translate-y-[15px] lg:translate-y-[40px]">
+          {/* <div className="hidden sm:block lg:block absolute -inset-12 md:-inset-11 lg:-inset-10 z-0 pointer-events-none translate-y-[15px] lg:translate-y-[40px]">
             <img src="/image/frame1.png" alt="" className="w-full object-fill opacity-90" />
-          </div>*/}
+          </div> */}
 
           <div className="relative rounded-none overflow-hidden aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/3] shadow-2xl z-10">
             {HERO_IMAGES.map((img, idx) => (
@@ -148,18 +169,15 @@ export function Hero() {
             {/* Yellow accent border */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FFCB2F] z-20" />
           </div>
-          {/* Decorative indicator dots */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
-            {HERO_IMAGES.map((_, idx) => (
-              <img
-                key={`dot-desktop-${idx}`}
-                src="/image/half circle.png"
-                alt=""
-                className={`w-4 h-4 object-contain transition-all duration-300 ${currentImage === idx ? 'opacity-100 scale-125' : 'opacity-30 grayscale'
-                  }`}
-              />
-            ))}
-          </div>
+
+          {/* 인장 stamp - bottom right overlap 
+          <img
+            src="/image/injang.png"
+            alt="MyungGA seal"
+            className="absolute -bottom-10 -right-10 w-28 h-28 object-contain opacity-90 z-30 pointer-events-none"
+          />
+          */}
+
         </div>
       </div>
 

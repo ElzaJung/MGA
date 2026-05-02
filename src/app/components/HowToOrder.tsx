@@ -50,7 +50,8 @@ export function HowToOrder({
       delivery: formData.get("delivery") as string,
       eventDate: formData.get("eventDate") as string,
       dietary: formData.get("dietary") as string,
-      note: selectedItemsText,
+      generalnote: formData.get("generalnote") as string,
+      menuPreferencesSpecialRequests: selectedItemsText,
     };
 
     try {
@@ -115,7 +116,7 @@ export function HowToOrder({
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#FFCB2F] mt-0.5">•</span>
-                <span>Minimum order CA$300</span>
+                <span>Free delivery for orders over CA$300</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#FFCB2F] mt-0.5">•</span>
@@ -261,11 +262,11 @@ export function HowToOrder({
                 Occasion
               </label>
               <textarea
-                id="occassion"
+                id="occasion"
                 name="occasion"
                 rows={4}
                 className="w-full px-4 py-3 border border-[#1A1A1A]/20 focus:outline-none focus:border-[#FFCB2F] transition-colors"
-                placeholder="Not familiar with Korean cuisine? Explain us about your occassion and we'll recommend the best dishes for you!"
+                placeholder="Not familiar with Korean cuisine? Explain us about your occasion and we'll recommend the best dishes for you!"
               />
             </div>
 
@@ -274,7 +275,7 @@ export function HowToOrder({
                 htmlFor="general note"
                 className="block text-sm font-medium text-[#1A1A1A] mb-2"
               >
-                Generate Note{" "}
+                General Note{" "}
               </label>
               <textarea
                 id="generalnote"

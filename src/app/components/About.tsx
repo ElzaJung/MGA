@@ -10,14 +10,20 @@ export function About() {
   });
 
   // Pancake (Left)
-  const pancakeX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-400, 0, 0, -400]);
-  const pancakeRotate = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-180, 6, 6, -180]);
-  const pancakeOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.3, 0.3, 0]);
+  const pancakeX = useTransform(scrollYProgress, [0.25, 0.6, 0.8, 0.9], [-400, 0, 0, -400]);
+  const pancakeRotate = useTransform(scrollYProgress, [0.25, 0.6, 0.8, 0.9], [-180, 6, 6, -180]);
+  const pancakeOpacity = useTransform(scrollYProgress, [0.25, 0.45, 0.6, 0.9], [0, 0.8, 0.65, 0.3]);
 
   // Kimbap (Right)
-  const kimbapX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [400, 0, 0, 400]);
-  const kimbapRotate = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [180, -12, -12, 180]);
-  const kimbapOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.3, 0.3, 0]);
+  const kimbapX = useTransform(scrollYProgress, [0.25, 0.6, 0.8, 0.9], [380, -20, -20, 380]);
+  const kimbapRotate = useTransform(scrollYProgress, [0.25, 0.6, 0.8, 0.9], [180, 6, 6, 180]);
+  const kimbapOpacity = useTransform(scrollYProgress, [0.25, 0.45, 0.6, 0.9], [0, 0.5, 0.45, 0.3]);
+
+  // Kimbap (Right)
+  const mob_kimbapX = useTransform(scrollYProgress, [0.1, 0.95], [800, -100]);
+  const mob_kimbapRotate = useTransform(scrollYProgress, [0.1, 0.95], [360, 6]);
+  const mob_kimbapOpacity = useTransform(scrollYProgress, [0.15, 0.5, 0.95], [0.2, 0.5, 0.25]);
+
 
   return (
     <section ref={containerRef} className="py-20 px-6 bg-gradient-to-b from-white to-[#FAFAF5] relative overflow-hidden" aria-labelledby="about-heading">
@@ -30,13 +36,22 @@ export function About() {
         style={{ x: pancakeX, rotate: pancakeRotate, opacity: pancakeOpacity }}
       />
 
-      {/* Background Decor - Right Side */}
+      {/* Background Decor - Right Side (Desktop/Tablet) */}
       <motion.img
         src="/image/kimbap.png"
         alt=""
         aria-hidden="true"
-        className="absolute top-1/2 -right-[30vw] md:-right-75 -translate-y-1/2 w-[310vw] md:w-[950px] max-w-none object-contain pointer-events-none z-0"
+        className="hidden md:block absolute top-1/2 md:-right-75 -translate-y-1/2 md:w-[950px] max-w-none object-contain pointer-events-none z-0"
         style={{ x: kimbapX, rotate: kimbapRotate, opacity: kimbapOpacity }}
+      />
+
+      {/* Background Decor - Right Side (Mobile) */}
+      <motion.img
+        src="/image/kimbap.png"
+        alt=""
+        aria-hidden="true"
+        className="block md:hidden absolute top-1/2 -right-[30vw] -translate-y-1/2 w-[310vw] max-w-none object-contain pointer-events-none z-0"
+        style={{ x: mob_kimbapX, rotate: mob_kimbapRotate, opacity: mob_kimbapOpacity }}
       />
 
       <div className="max-w-5xl mx-auto relative z-10">

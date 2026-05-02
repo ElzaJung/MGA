@@ -116,7 +116,7 @@ export function CustomCreationsBanner() {
       </span>
 
       <div className="container relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="flex-1 flex flex-col gap-3">
+        <div className="flex-1 flex flex-col items-center text-center md:items-start md:text-left gap-3">
           <h3 className="font-display text-3xl md:text-4xl font-black text-[#1A1A1A] leading-tight font-[Plus_Jakarta_Sans]">
             Can't Find What You Want?
           </h3>
