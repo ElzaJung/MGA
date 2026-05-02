@@ -1,5 +1,7 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import menuData from "../menu.json";
 
 const HERO_IMAGES = [
   "/image/menu/BB124E37-247A-4E9E-8C8A-6DDF51D610C8_1_105_c.jpeg",
@@ -11,9 +13,17 @@ const cuisines = [
   "Korean",
 ];
 
+// Collect all unique images from HERO_IMAGES and menu.json
+const ALL_GALLERY_IMAGES = Array.from(new Set([
+  ...HERO_IMAGES,
+  ...menuData.flatMap(cat => cat.items.map(item => item.img))
+]));
+
 export function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
   const [roofKey, setRoofKey] = useState(Date.now());
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -35,6 +45,26 @@ export function Hero() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Handle body scroll lock and escape key
+  useEffect(() => {
+    if (isGalleryOpen || selectedImageIndex !== null) {
+      document.body.classList.add("no-scroll");
+      const handleEsc = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          if (selectedImageIndex !== null) setSelectedImageIndex(null);
+          else setIsGalleryOpen(false);
+        }
+      };
+      window.addEventListener("keydown", handleEsc);
+      return () => {
+        document.body.classList.remove("no-scroll");
+        window.removeEventListener("keydown", handleEsc);
+      };
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isGalleryOpen]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center bg-[#FAFAF5] overflow-hidden pt-0 md:pt-8 lg:pt-0 pb-0 md:pb-10 lg:pb-10">
@@ -98,11 +128,14 @@ export function Hero() {
           </h1>
 
           {/* Mobile Slideshow: Only visible on mobile, between title and description */}
-          <div className="md:hidden relative w-full max-w-[350px] animate-fade-up animate-fade-up-delay-2">
-            {/* Frame */}
-            {/*<div className="block md:hidden absolute -inset-6 z-0 pointer-events-none translate-y-[15px]">
-              <img src="/image/frame1.png" alt="" className="w-full object-fill opacity-90" />
-            </div>*/}
+          <div
+            className="md:hidden relative w-full max-w-[350px] animate-fade-up animate-fade-up-delay-2 cursor-pointer group/mobile"
+            onClick={() => setIsGalleryOpen(true)}
+          >
+            {/* Gallery Hint */}
+            <div className="absolute top-4 right-4 z-30 bg-black/40 backdrop-blur-md p-2 rounded-full opacity-0 group-hover/mobile:opacity-100 transition-opacity">
+              <Maximize2 size={16} className="text-white" />
+            </div>
 
             <div className="relative rounded-none overflow-hidden aspect-[4/3] shadow-2xl z-10">
               {HERO_IMAGES.map((img, idx) => (
@@ -161,13 +194,14 @@ export function Hero() {
         </div>
 
         {/* Right: Image Slideshow (Desktop Only) */}
-        <div className="hidden md:block relative animate-fade-up animate-fade-up-delay-2 mt-8 md:mt-0">
-          {/* Frame */}
-          {/*To move the frame further away from the top (down), increase the translate-y-[50px] value. 
-              To move it up, use a negative value like -translate-y-[50px] */}
-          {/* <div className="hidden sm:block lg:block absolute -inset-12 md:-inset-11 lg:-inset-10 z-0 pointer-events-none translate-y-[15px] lg:translate-y-[40px]">
-            <img src="/image/frame1.png" alt="" className="w-full object-fill opacity-90" />
-          </div> */}
+        <div
+          className="hidden md:block relative animate-fade-up animate-fade-up-delay-2 mt-8 md:mt-0 cursor-pointer group/desktop"
+          onClick={() => setIsGalleryOpen(true)}
+        >
+          {/* Gallery Hint */}
+          <div className="absolute top-6 right-6 z-30 bg-black/40 backdrop-blur-md p-3 rounded-full opacity-0 group-hover/desktop:opacity-100 transition-opacity transform group-hover/desktop:scale-110 duration-300">
+            <Maximize2 size={24} className="text-white" />
+          </div>
 
           <div className="relative rounded-none overflow-hidden aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/3] shadow-2xl z-10">
             {HERO_IMAGES.map((img, idx) => (
@@ -195,7 +229,102 @@ export function Hero() {
       </div>
 
       {/* Yellow bottom accent line */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-[#FFCB2F]/30" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-[#FFCB2F]/0.2" />
+
+      {/* Gallery Overlay */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex flex-col p-6 md:p-12 overflow-y-auto custom-scrollbar"
+          >
+            {/* Header - Only X Button */}
+            <div className="flex justify-end items-center mb-6">
+              <button
+                onClick={() => setIsGalleryOpen(false)}
+                className="p-4 hover:bg-white/10 rounded-full transition-colors group"
+              >
+                <X size={32} className="text-white group-hover:rotate-90 transition-transform duration-300" />
+              </button>
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
+              {ALL_GALLERY_IMAGES.map((img, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-white/5 border border-white/10 cursor-pointer"
+                  onClick={() => setSelectedImageIndex(idx)}
+                >
+                  <img
+                    src={img}
+                    alt={`Gallery image ${idx + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Footer decoration removed */}
+            <div className="mt-20 pb-12" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Lightbox Overlay */}
+      <AnimatePresence>
+        {selectedImageIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[110] bg-black/98 flex items-center justify-center p-4 md:p-12"
+            onClick={() => setSelectedImageIndex(null)}
+          >
+            {/* Close Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); setSelectedImageIndex(null); }}
+              className="absolute top-6 right-6 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-50"
+            >
+              <X size={40} />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => (prev! + 1) % ALL_GALLERY_IMAGES.length);
+              }}
+              className="absolute right-6 top-1/2 -translate-y-1/2 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-50"
+            >
+              <ChevronRight size={48} />
+            </button>
+
+            {/* Large Image */}
+            <div
+              key={selectedImageIndex}
+              className="relative w-full h-full max-w-5xl max-h-[85vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={ALL_GALLERY_IMAGES[selectedImageIndex]}
+                alt="Selected gallery image"
+                className="max-w-full max-h-full object-contain shadow-2xl rounded-sm"
+              />
+
+              {/* Counter */}
+              <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 text-white/50 font-body tracking-[0.2em] text-sm uppercase">
+                {selectedImageIndex + 1} / {ALL_GALLERY_IMAGES.length}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

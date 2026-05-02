@@ -355,3 +355,26 @@
 .animate-fade-up-delay-4 {
   animation-delay: 0.8s;
 }
+
+/* Custom scrollbar for the gallery */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 203, 47, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 203, 47, 0.5);
+}
+
+/* Body lock utility */
+.no-scroll {
+  overflow: hidden !important;
+}
