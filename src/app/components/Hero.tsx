@@ -90,7 +90,9 @@ export function Hero() {
           <h1 className="relative z-10 font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-[#1A1A1A] animate-fade-up animate-fade-up-delay-1 font-[Plus_Jakarta_Sans]">
             Authentic
             <br />
-            <em className="not-italic text-[#FFCB2F]">Korean</em>
+            <span className="korean-color-transition">
+              Korean
+            </span>
             <br />
             Flavours
           </h1>

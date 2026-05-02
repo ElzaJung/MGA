@@ -11,12 +11,11 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "MyungGA Korean Restaurant & Catering - Authentic Korean Cuisine for School, Corporate, and Special Events",
-  description = "Premium Korean catering services with 20+ years experience. Serving Waterloo, Ontario.",
+  title = "MyungGA Korean Restaurant & Catering - Authentic Asian Cuisine for School, Corporate, and Special Events",
+  description = "Premium Korean catering services with 20+ years experience.",
   keywords = "Korean catering, Asian catering, Waterloo ontario catering, authentic Korean food",
   canonical,
   ogType = "website",
-  ogImage = "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1200",
   structuredData,
 }: SEOProps) {
   useEffect(() => {
@@ -46,16 +45,13 @@ export function SEO({
     updateMetaTag('meta[property="og:title"]', 'property', title);
     updateMetaTag('meta[property="og:description"]', 'property', description);
     updateMetaTag('meta[property="og:type"]', 'property', ogType);
-    updateMetaTag('meta[property="og:image"]', 'property', ogImage);
     if (canonical) {
       updateMetaTag('meta[property="og:url"]', 'property', canonical);
     }
 
     // Twitter Card tags
-    updateMetaTag('meta[name="twitter:card"]', 'name', 'summary_large_image');
     updateMetaTag('meta[name="twitter:title"]', 'name', title);
     updateMetaTag('meta[name="twitter:description"]', 'name', description);
-    updateMetaTag('meta[name="twitter:image"]', 'name', ogImage);
 
     // Canonical URL
     if (canonical) {
@@ -78,23 +74,21 @@ export function SEO({
       }
       scriptElement.textContent = JSON.stringify(structuredData);
     }
-  }, [title, description, keywords, canonical, ogType, ogImage, structuredData]);
+  }, [title, description, keywords, canonical, ogType, structuredData]);
 
   return null;
 }
 
 // Predefined structured data for local business
 export const myungGaStructuredData = {
-  "@context": "https://schema.org",
   "@type": "Restaurant",
-  "@id": "https://myungga-catering.com",
-  "name": "MyungGa Korean Restaurant & Catering",
-  "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1200",
+  "@id": "https://myungga.ca",
+  "name": "MyungGA Korean Restaurant & Catering",
   "description": "Premium Korean catering and bao services with 20+ years experience. Specializing in authentic Korean cuisine and signature bao boxes.",
-  "servesCuisine": ["Korean", "Bao", "Asian Fusion"],
+  "servesCuisine": ["Korean", "Bao", "Chicken", "Asian Fusion"],
   "priceRange": "$$",
   "address": {
-    "@type": "PostalAddress",
+    "@type": "256 Phillip St. Waterloo, ON",
     "addressLocality": "Ontario",
     "addressRegion": "ON",
     "addressCountry": "CA"
@@ -104,24 +98,13 @@ export const myungGaStructuredData = {
     "latitude": 43.4643,
     "longitude": -80.5204
   },
-  "url": "https://myungga-catering.com",
-  "telephone": "+1-XXX-XXX-XXXX",
-  "email": "buza0605@gmail.com",
+  "url": "https://myungga.ca",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "09:00",
-      "closes": "21:00"
+      "opens": "11:00",
+      "closes": "22:00"
     }
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "150"
-  },
-  "menu": "https://myungga-catering.com/#menu",
-  "acceptsReservations": "True",
-  "paymentAccepted": "Cash, Credit Card, Debit Card",
-  "currenciesAccepted": "CAD"
+  ]
 };

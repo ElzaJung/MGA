@@ -284,6 +284,16 @@
   font-weight: 900;
 }
 
+.korean-color-transition {
+  color: #FFCB2F;
+  transition: color 0.5s ease;
+  cursor: pointer;
+}
+
+.korean-color-transition:hover {
+  color: #6c7e9b;
+}
+
 /* Card lift effect */
 .card-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
