@@ -94,6 +94,16 @@ export function Navigation({ selectedMenuItems = [] }: NavigationProps) {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-[#1A1A1A]/10">
             <div className="flex flex-col gap-4">
+
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="text-lg text-[#1A1A1A]/60 text-left"
+              >
+                Services
+              </button>
               <button
                 onClick={() => {
                   setIsOpen(false);
@@ -106,20 +116,11 @@ export function Navigation({ selectedMenuItems = [] }: NavigationProps) {
               <button
                 onClick={() => {
                   setIsOpen(false);
-                  document.getElementById("service")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="text-lg text-[#1A1A1A]/60 text-left"
-              >
-                Service
-              </button>
-              <button
-                onClick={() => {
-                  setIsOpen(false);
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="btn-primary justify-center"
               >
-                Book Your Event
+                Get A Quote
               </button>
             </div>
           </div>

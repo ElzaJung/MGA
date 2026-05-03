@@ -1,17 +1,136 @@
 [
   {
+    "category": "Appetizer & Street Food",
+    "korean": "분식 및 애피타이저",
+    "items": [
+      {
+        "name": "Appetizer Box",
+        "desc": "A curated selection of signature Korean starters and bite-sized street favorites.",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Tteokbokki",
+        "desc": "Chewy rice cakes in a flavorful sauce. Available in Original or Rosé.",
+        "img": "/image/menu/tteokbokki.png"
+      },
+      {
+        "name": "Soondae",
+        "desc": "Traditional Korean blood sausage steamed to perfection, a classic street food staple.",
+        "img": "/image/menu/soondae.png"
+      },
+      {
+        "name": "Korean Pancakes",
+        "desc": "Savory pan-fried delicacies. Choose from Kimchi, Seafood, or Korean Meatball (동그랑땡).",
+        "img": "https://images.unsplash.com/photo-1676874566453-06335e4ae97d?q=80&w=1080"
+      },
+      {
+        "name": "Japchae",
+        "desc": "Sweet and savory stir-fried glass noodles with vegetables and sesame oil.",
+        "img": "https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?q=80&w=1080"
+      },
+      {
+        "name": "Son Mandu",
+        "desc": "Hand-made steamed dumplings filled with a seasoned mixture of meat and vegetables.",
+        "img": "/image/menu/son-mandu.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Korean Food",
+    "korean": "한식",
+    "items": [
+      {
+        "name": "Katsu Bento Box",
+        "desc": "TBD",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Bulgogi Bento Box",
+        "desc": "TBD",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Spicy Pork Bento Box",
+        "desc": "TBD.",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Bibimbap",
+        "desc": "Rice bowl with assorted vegetables and egg. Available with Vegetable, Beef, or Spicy Pork.",
+        "img": "/image/menu/TBD.png"
+      }
+    ]
+  },
+  {
+    "category": "Chinese Food",
+    "korean": "중식",
+    "items": [
+      {
+        "name": "Family Jjajangmyeon",
+        "desc": "Noodles with thick, savory black bean sauce and seafood.",
+        "img": "/image/menu/family-jjajjang.png"
+      },
+      {
+        "name": "Tangsuyuk",
+        "desc": "Deep fried pork served with sweet & sour sauce.",
+        "img": "/image/menu/tangsuyuk.png"
+      },
+      {
+        "name": "Kkanpunggi",
+        "desc": "Spicy deep fried chicken in sauce.",
+        "img": "/image/menu/kkanpunggi.png"
+      },
+      {
+        "name": "Yooringi",
+        "desc": "Deep fried chicken in soy sauce with vegetables.",
+        "img": "/image/menu/yooringi.png"
+      },
+      {
+        "name": "Fried Rice",
+        "desc": "Wok-fried rice. Available in Vegetable, Chicken, Shrimp, or Kimchi flavors.",
+        "img": "/image/menu/fried-rice2.png"
+      }
+    ]
+  },
+  {
+    "category": "HotPot & BBQ",
+    "korean": "전골 및 바베큐",
+    "items": [
+      {
+        "name": "Korean BBQ",
+        "desc": "Premium cuts of meat prepared with traditional seasonings.",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Pork Bone Soup Hotpot",
+        "desc": "Deep, rich, and spicy broth simmered with tender pork spine and potatoes.",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Budaejigae Hotpot",
+        "desc": "Army-style stew featuring ham, sausage, spam, beans, and ramen in a spicy broth.",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Bbyu-jjim (Braised Pork Backbone)",
+        "desc": "Hearty braised pork bone dish seasoned with traditional Korean spices.",
+        "img": "/image/menu/TBD.png"
+      }
+    ]
+  },
+  {
     "category": "Bao",
     "korean": "바오",
     "items": [
       {
-        "name": "Pork Belly Bao Box",
-        "desc": "Steamed fluffy buns filled with glazed pork belly or soy chicken and pickled vegetables",
-        "img": "/image/bao.png"
+        "name": "Chicken Katsu Bao Box",
+        "desc": "Signature box of steamed buns stuffed with crispy chicken katsu, veggies and MGA signature sauce.",
+        "img": "/image/menu/chicken-katsu.png"
       },
       {
-        "name": "Chicken Katsu Bao Box",
-        "desc": "A curated box of 3 assorted baos with signature sauces and sides",
-        "img": "/image/bao.png"
+        "name": "Pork Belly Bao Box",
+        "desc": "Signature box of steamed buns stuffed with tender, glazed pork belly, veggies and MGA signature sauce.",
+        "img": "/image/menu/pork-belly.png"
       }
     ]
   },
@@ -21,86 +140,19 @@
     "items": [
       {
         "name": "MGA Chicken Box",
-        "desc": "Double-fried crispy chicken with golden perfection",
-        "img": "https://images.unsplash.com/photo-1644203542635-e34075350a79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBmcmllZCUyMGNoaWNrZW4lMjBjcmlzcHl8ZW58MXx8fHwxNzc0OTc1OTIzfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Yangnyeom Chicken",
-        "desc": "Sweet and spicy Korean-style chicken with gochujang glaze",
-        "img": "https://images.unsplash.com/photo-1734987942068-a1a459d65d3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBjaGlja2VuJTIwd2luZ3MlMjBzYXVjZXxlbnwxfHx8fDE3NzQ5NzY3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Soy Garlic Chicken",
-        "desc": "Savory chicken glazed with soy sauce and garlic",
-        "img": "https://images.unsplash.com/photo-1706288586330-9766c1956daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb3klMjBnYXJsaWMlMjBjaGlja2VuJTIwa29yZWFufGVufDF8fHx8MTc3NDk3Njc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Chi Chee Chicken",
-        "desc": "Savory chicken glazed with soy sauce and garlic",
-        "img": "https://images.unsplash.com/photo-1706288586330-9766c1956daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb3klMjBnYXJsaWMlMjBjaGlja2VuJTIwa29yZWFufGVufDF8fHx8MTc3NDk3Njc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Honey Garlic Chicken",
-        "desc": "Savory chicken glazed with soy sauce and garlic",
-        "img": "https://images.unsplash.com/photo-1706288586330-9766c1956daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb3klMjBnYXJsaWMlMjBjaGlja2VuJTIwa29yZWFufGVufDF8fHx8MTc3NDk3Njc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
+        "desc": "You can choose 4 flavours from here: Original, Yangnyeom (sweet and spicy), Soy Garlic, Honey Garlic, or Chi Chee. Every chickens is boneless.",
+        "img": "/image/menu/chickenbox.png"
       }
     ]
   },
   {
-    "category": "Korean Traditional",
-    "korean": "한식",
+    "category": "Kimbap (Roll Tray)",
+    "korean": "김밥",
     "items": [
       {
-        "name": "Bbyujim (Braised Pork Ribs)",
-        "desc": "Tender pork ribs slow-braised in traditional Korean spices",
-        "img": "https://images.unsplash.com/photo-1687966699414-095ca9c35593?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFpc2VkJTIwcG9yayUyMHJpYnMlMjBrb3JlYW58ZW58MXx8fHwxNzc0OTc2NzQwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Japchae",
-        "desc": "Stir-fried glass noodles with vegetables and your choice of protein",
-        "img": "https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBqYXBjaGFlJTIwZ2xhc3MlMjBub29kbGVzfGVufDF8fHx8MTc3NDk3NTkxOXww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Kimchi Pancake",
-        "desc": "Crispy savory pancake made with kimchi and green onions",
-        "img": "https://images.unsplash.com/photo-1676874566453-06335e4ae97d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBraW1jaGklMjBwYW5jYWtlJTIwamVvbnxlbnwxfHx8fDE3NzQ5NzU5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      }
-    ]
-  },
-  {
-    "category": "Chinese Fusion",
-    "korean": "중식",
-    "items": [
-      {
-        "name": "Jjajangmyeon",
-        "desc": "Korean-Chinese black bean noodles with vegetables and pork",
-        "img": "https://images.unsplash.com/photo-1626803774007-f92c2c32cbe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqamFqYW5nbXllb24lMjBibGFjayUyMGJlYW4lMjBub29kbGVzfGVufDF8fHx8MTc3NDk3Njc0MXww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Jjampong",
-        "desc": "Spicy seafood noodle soup with vegetables in a rich broth",
-        "img": "https://images.unsplash.com/photo-1749293253083-e5f2a48de33b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqamFtcG9uZyUyMHNwaWN5JTIwc2VhZm9vZCUyMG5vb2RsZXN8ZW58MXx8fHwxNzc0OTc2NzQxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Tangsuyuk",
-        "desc": "Crispy sweet and sour pork with vegetables in a tangy sauce",
-        "img": "https://images.unsplash.com/photo-1623689043695-aec9746be500?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzd2VldCUyMHNvdXIlMjBwb3JrJTIwY2hpbmVzZXxlbnwxfHx8fDE3NzQ5NzY3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      }
-    ]
-  },
-  {
-    "category": "Korean Street Food",
-    "korean": "분식",
-    "items": [
-      {
-        "name": "Gimbap",
-        "desc": "Korean rice rolls filled with vegetables, egg, and protein",
-        "img": "https://images.unsplash.com/photo-1656428254987-45d97432714b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjBnaW1iYXAlMjBraW1iYXAlMjByb2xsfGVufDF8fHx8MTc3NDk3NTkyM3ww&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      {
-        "name": "Tteokbokki",
-        "desc": "Spicy rice cakes in gochugaru sauce with fish cake and vegetables",
-        "img": "https://images.unsplash.com/photo-1679581083578-94eae6e8d7a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrb3JlYW4lMjB0dGVva2Jva2tpJTIwcmljZSUyMGNha2VzfGVufDF8fHx8MTc3NDk0Mjc0MXww&ixlib=rb-4.1.0&q=80&w=1080"
+        "name": "Kimbap",
+        "desc": "Classic Korean seaweed rice rolls. Available in Veggie or savory Bulgogi flavors.",
+        "img": "/image/menu/kimbap.jpeg"
       }
     ]
   }

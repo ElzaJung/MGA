@@ -20,9 +20,9 @@ export function About() {
   const kimbapOpacity = useTransform(scrollYProgress, [0.25, 0.45, 0.6, 0.9], [0, 0.5, 0.45, 0.3]);
 
   // Kimbap (Right)
-  const mob_kimbapX = useTransform(scrollYProgress, [0.1, 0.95], [800, -100]);
+  const mob_kimbapX = useTransform(scrollYProgress, [0.1, 0.95], [800, -300]);
   const mob_kimbapRotate = useTransform(scrollYProgress, [0.1, 0.95], [360, 6]);
-  const mob_kimbapOpacity = useTransform(scrollYProgress, [0.15, 0.5, 0.95], [0.2, 0.5, 0.25]);
+  const mob_kimbapOpacity = useTransform(scrollYProgress, [0.15, 0.5, 1], [0.2, 0.5, 0.25]);
 
 
   return (
@@ -38,19 +38,19 @@ export function About() {
 
       {/* Background Decor - Right Side (Desktop/Tablet) */}
       <motion.img
-        src="/image/kimbap.png"
+        src="/image/kimbap2.png"
         alt=""
         aria-hidden="true"
-        className="hidden md:block absolute top-1/2 md:-right-75 -translate-y-1/2 md:w-[950px] max-w-none object-contain pointer-events-none z-0"
+        className="hidden md:block absolute top-1/2 md:-right-5 -translate-y-1/2 md:w-[400px] max-w-none object-contain pointer-events-none z-0"
         style={{ x: kimbapX, rotate: kimbapRotate, opacity: kimbapOpacity }}
       />
 
       {/* Background Decor - Right Side (Mobile) */}
       <motion.img
-        src="/image/kimbap.png"
+        src="/image/kimbap2.png"
         alt=""
         aria-hidden="true"
-        className="block md:hidden absolute top-1/2 -right-[30vw] -translate-y-1/2 w-[310vw] max-w-none object-contain pointer-events-none z-0"
+        className="block md:hidden absolute top-1/2 -right-[10vw] -translate-y-1/2 w-[200vw] max-w-none object-contain pointer-events-none z-0"
         style={{ x: mob_kimbapX, rotate: mob_kimbapRotate, opacity: mob_kimbapOpacity }}
       />
 

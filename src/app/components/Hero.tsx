@@ -3,21 +3,17 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import menuData from "../menu.json";
 
-const HERO_IMAGES = [
-  "/image/menu/BB124E37-247A-4E9E-8C8A-6DDF51D610C8_1_105_c.jpeg",
-  "/image/menu/23DFA511-2707-4ADA-948F-76D090BC6F9B_1_201_a.jpeg",
-  "/image/menu/DF801FE4-8BD7-4544-ADBC-BE82AEA215BF_1_201_a.jpeg",
-];
 
 const cuisines = [
   "Korean",
 ];
 
-// Collect all unique images from HERO_IMAGES and menu.json
-const ALL_GALLERY_IMAGES = Array.from(new Set([
-  ...HERO_IMAGES,
-  ...menuData.flatMap(cat => cat.items.map(item => item.img))
-]));
+// Dynamically load all images from the public/image/menu/slideshow directory
+const menuImageModules = import.meta.glob('/public/image/menu/slideshow/*.{jpg,jpeg,png,JPG,JPEG}', { eager: true });
+const HERO_IMAGES = Object.keys(menuImageModules).map(path => path.replace('/public', ''));
+
+// Only use images from the slideshow directory for the gallery
+const ALL_GALLERY_IMAGES = HERO_IMAGES;
 
 export function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -27,21 +23,18 @@ export function Hero() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
+      setCurrentImage((prev) => (prev + 1) % ALL_GALLERY_IMAGES.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    const GIF_DURATION = 200; // Estimated duration of the roof.gif animation
-    const PAUSE_DURATION = 20000; // 20 seconds pause
+    const GIF_DURATION = 3000; // 3 seconds duration of the roof.gif animation
+    const PAUSE_DURATION = 20000; // 20 seconds pause at the last frame
 
-    const runCycle = () => {
-      // Refresh the GIF by updating the key
-      setRoofKey(Date.now());
-    };
-
-    const interval = setInterval(runCycle, GIF_DURATION + PAUSE_DURATION);
+    const interval = setInterval(() => {
+      setRoofKey(prev => prev + 1);
+    }, GIF_DURATION + PAUSE_DURATION);
 
     return () => clearInterval(interval);
   }, []);
@@ -50,21 +43,25 @@ export function Hero() {
   useEffect(() => {
     if (isGalleryOpen || selectedImageIndex !== null) {
       document.body.classList.add("no-scroll");
-      const handleEsc = (e: KeyboardEvent) => {
+      const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
           if (selectedImageIndex !== null) setSelectedImageIndex(null);
           else setIsGalleryOpen(false);
+        } else if (e.key === "ArrowRight" && selectedImageIndex !== null) {
+          setSelectedImageIndex((prev) => (prev! + 1) % ALL_GALLERY_IMAGES.length);
+        } else if (e.key === "ArrowLeft" && selectedImageIndex !== null) {
+          setSelectedImageIndex((prev) => (prev! - 1 + ALL_GALLERY_IMAGES.length) % ALL_GALLERY_IMAGES.length);
         }
       };
-      window.addEventListener("keydown", handleEsc);
+      window.addEventListener("keydown", handleKeyDown);
       return () => {
         document.body.classList.remove("no-scroll");
-        window.removeEventListener("keydown", handleEsc);
+        window.removeEventListener("keydown", handleKeyDown);
       };
     } else {
       document.body.classList.remove("no-scroll");
     }
-  }, [isGalleryOpen]);
+  }, [isGalleryOpen, selectedImageIndex]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center bg-[#FAFAF5] overflow-hidden pt-0 md:pt-8 lg:pt-0 pb-0 md:pb-10 lg:pb-10">
@@ -108,12 +105,19 @@ export function Hero() {
       <div className="container relative z-10 grid md:grid-cols-2 gap-16 lg:gap-24 items-center py-20 md:py-0">
         {/* Left: Text */}
         <div className="flex flex-col gap-5 items-center text-center md:items-start md:text-left md:pl-12 lg:pl-20">
-          <div className="animate-fade-up relative z-0 md:-ml-13 lg:-ml-20 scale-[1] md:scale-[1.1] lg:scale-100 origin-center md:origin-left">
+          <div className="animate-fade-up relative z-0 md:-ml-13 lg:-ml-20 scale-[1] md:scale-[1.1] lg:scale-100 origin-center md:origin-left -mb-10 md:-mb-3 lg:-mb-10">
+            {/* Base image provides layout and acts as a placeholder while the new GIF loads */}
+            <img
+              src={`/image/roof.gif?v=base`}
+              alt="Traditional Roof Design Base"
+              className="w-full max-w-none object-fill object-center md:object-left mx-auto md:mx-0"
+            />
+            {/* New animated GIF overlay */}
             <img
               key={roofKey}
               src={`/image/roof.gif?v=${roofKey}`}
               alt="Traditional Roof Design"
-              className="w-full max-w-none object-fill object-center md:object-left mx-auto md:mx-0 -mb-10 md:-mb-3 lg:-mb-10"
+              className="absolute top-0 left-0 w-full h-full object-fill object-center md:object-left mx-auto md:mx-0"
             />
           </div>
 
@@ -129,15 +133,15 @@ export function Hero() {
 
           {/* Mobile Slideshow: Only visible on mobile, between title and description */}
           <div
-            className="md:hidden relative w-full max-w-[350px] animate-fade-up animate-fade-up-delay-2 cursor-pointer group/mobile"
+            className="md:hidden relative w-full max-w-[350px] animate-fade-up animate-fade-up-delay-2 group/mobile"
             onClick={() => setIsGalleryOpen(true)}
           >
             {/* Gallery Hint */}
-            <div className="absolute top-4 right-4 z-30 bg-black/40 backdrop-blur-md p-2 rounded-full opacity-0 group-hover/mobile:opacity-100 transition-opacity">
+            <div className="absolute top-4 right-4 z-30 bg-black/40 backdrop-blur-md p-2 rounded-full opacity-0 group-hover/mobile:opacity-100 transition-opacity pointer-events-none">
               <Maximize2 size={16} className="text-white" />
             </div>
 
-            <div className="relative rounded-none overflow-hidden aspect-[4/3] shadow-2xl z-10">
+            <div className="relative rounded-none overflow-hidden aspect-[4/3] shadow-2xl z-10 cursor-pointer">
               {HERO_IMAGES.map((img, idx) => (
                 <img
                   key={`mobile-${img}`}
@@ -149,6 +153,8 @@ export function Hero() {
               ))}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FFCB2F] z-20" />
             </div>
+
+
 
             {/* 인장 stamp - bottom right overlap 
             <img
@@ -195,15 +201,15 @@ export function Hero() {
 
         {/* Right: Image Slideshow (Desktop Only) */}
         <div
-          className="hidden md:block relative animate-fade-up animate-fade-up-delay-2 mt-8 md:mt-0 cursor-pointer group/desktop"
+          className="hidden md:block relative animate-fade-up animate-fade-up-delay-2 mt-8 md:mt-0 group/desktop"
           onClick={() => setIsGalleryOpen(true)}
         >
           {/* Gallery Hint */}
-          <div className="absolute top-6 right-6 z-30 bg-black/40 backdrop-blur-md p-3 rounded-full opacity-0 group-hover/desktop:opacity-100 transition-opacity transform group-hover/desktop:scale-110 duration-300">
+          <div className="absolute top-6 right-6 z-30 bg-black/40 backdrop-blur-md p-3 rounded-full opacity-0 group-hover/desktop:opacity-100 transition-opacity transform group-hover/desktop:scale-110 duration-300 pointer-events-none">
             <Maximize2 size={24} className="text-white" />
           </div>
 
-          <div className="relative rounded-none overflow-hidden aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/3] shadow-2xl z-10">
+          <div className="relative rounded-none overflow-hidden aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/3] shadow-2xl z-10 cursor-pointer">
             {HERO_IMAGES.map((img, idx) => (
               <img
                 key={`desktop-${img}`}
@@ -216,6 +222,8 @@ export function Hero() {
             {/* Yellow accent border */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FFCB2F] z-20" />
           </div>
+
+
 
           {/* 인장 stamp - bottom right overlap 
           <img
@@ -284,41 +292,59 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[110] bg-black/98 flex items-center justify-center p-4 md:p-12"
+            className="fixed inset-0 z-[110] bg-black/98 backdrop-blur-xl flex items-center justify-center p-4 md:p-12"
             onClick={() => setSelectedImageIndex(null)}
           >
             {/* Close Button */}
             <button
               onClick={(e) => { e.stopPropagation(); setSelectedImageIndex(null); }}
-              className="absolute top-6 right-6 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-50"
+              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 text-white/80 hover:text-white bg-white/5 hover:bg-white/20 backdrop-blur-md rounded-full transition-all z-50 group border border-white/10"
             >
-              <X size={40} />
+              <X size={28} className="group-hover:rotate-90 transition-transform duration-300" />
             </button>
 
+            {/* Left Navigation */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => (prev! - 1 + ALL_GALLERY_IMAGES.length) % ALL_GALLERY_IMAGES.length);
+              }}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 md:p-4 text-white/80 hover:text-white bg-white/5 hover:bg-white/20 backdrop-blur-md rounded-full transition-all z-50 group border border-white/10"
+            >
+              <ChevronLeft size={36} className="group-hover:-translate-x-1 transition-transform" />
+            </button>
+
+            {/* Right Navigation */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedImageIndex((prev) => (prev! + 1) % ALL_GALLERY_IMAGES.length);
               }}
-              className="absolute right-6 top-1/2 -translate-y-1/2 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-50"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 md:p-4 text-white/80 hover:text-white bg-white/5 hover:bg-white/20 backdrop-blur-md rounded-full transition-all z-50 group border border-white/10"
             >
-              <ChevronRight size={48} />
+              <ChevronRight size={36} className="group-hover:translate-x-1 transition-transform" />
             </button>
 
-            {/* Large Image */}
+            {/* Large Image with AnimatePresence for smooth transitions */}
             <div
-              key={selectedImageIndex}
-              className="relative w-full h-full max-w-5xl max-h-[85vh] flex items-center justify-center"
+              className="relative w-full h-full max-w-6xl max-h-[85vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={ALL_GALLERY_IMAGES[selectedImageIndex]}
-                alt="Selected gallery image"
-                className="max-w-full max-h-full object-contain shadow-2xl rounded-sm"
-              />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={selectedImageIndex}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  src={ALL_GALLERY_IMAGES[selectedImageIndex]}
+                  alt="Selected gallery image"
+                  className="max-w-full max-h-full object-contain shadow-2xl rounded-sm"
+                />
+              </AnimatePresence>
 
               {/* Counter */}
-              <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 text-white/50 font-body tracking-[0.2em] text-sm uppercase">
+              <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 text-white/50 font-body tracking-[0.2em] text-sm uppercase bg-black/40 px-4 py-2 rounded-full backdrop-blur-md border border-white/5">
                 {selectedImageIndex + 1} / {ALL_GALLERY_IMAGES.length}
               </div>
             </div>

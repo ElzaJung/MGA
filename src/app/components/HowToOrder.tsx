@@ -107,6 +107,9 @@ export function HowToOrder({
             Tell us about your event and we'll reply you within
             12 hours. No commitment required yet.
           </p>
+          <p className="font-body text-[#1A1A1A]/50 italic leading-relaxed max-w-sm mt-2">
+            * This site is exclusively for our catering services. If you'd like to place a standard restaurant order, kindly give us a call at (519) 208-8818.
+          </p>
 
           <div className="mt-6 pt-6 border-t border-[#1A1A1A]/10">
             <ul className="space-y-3 font-body text-sm text-[#1A1A1A]/70">

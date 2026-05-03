@@ -24,7 +24,7 @@ const services = [
   },
   {
     title: "Bento / Boxed Meals",
-    image: "./image/kimbap.jpg",
+    image: "/image/menu/boxed-meals.jpeg",
     description: "Convenient and beautifully packed individual meals for any occasion"
   }
 ];
