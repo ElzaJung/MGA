@@ -60,26 +60,26 @@ export function FoodShowcase({ selectedMenuItems = [], setSelectedMenuItems }: F
               <div
                 key={item.name}
                 onClick={() => toggleMenuItem(item.name)}
-                className={`reveal reveal-delay-${i + 1} bg-white card-lift overflow-hidden flex flex-col md:flex-row cursor-pointer group`}
+                className={`reveal reveal-delay-${i + 1} bg-white card-lift overflow-hidden flex flex-row cursor-pointer group`}
               >
-                <div className="w-full md:w-48 h-48 md:h-auto flex-shrink-0 overflow-hidden">
+                <div className="w-32 sm:w-40 md:w-48 flex-shrink-0 overflow-hidden min-h-[120px]">
                   <img
                     src={item.img}
                     alt={`${item.name} - ${item.desc} - MyungGa Korean catering menu item`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6 flex flex-col justify-between gap-3 flex-1">
+                <div className="p-4 md:p-6 flex flex-col justify-between gap-2 md:gap-3 flex-1">
                   <div>
-                    <h3 className="font-display text-xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans] group-hover:text-[#FFCB2F] transition-colors">{item.name}</h3>
-                    <p className="font-body text-sm text-[#1A1A1A]/55 mt-2 leading-relaxed">{item.desc}</p>
+                    <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans] group-hover:text-[#FFCB2F] transition-colors line-clamp-2 md:line-clamp-none">{item.name}</h3>
+                    <p className="font-body text-xs md:text-sm text-[#1A1A1A]/55 mt-1 md:mt-2 leading-relaxed line-clamp-3 md:line-clamp-none">{item.desc}</p>
                   </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleMenuItem(item.name);
                     }}
-                    className={`mt-4 px-3 py-1.5 text-xs transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 ${isSelected
+                    className={`mt-2 md:mt-4 px-3 py-1.5 text-xs transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 self-start ${isSelected
                       ? "text-[#FFCB2F] underline"
                       : "text-[#1A1A1A]/50 hover:text-[#FFCB2F]"
                       }`}

@@ -21,12 +21,12 @@
       {
         "name": "Korean Pancakes",
         "desc": "Savory pan-fried delicacies. Choose from Kimchi, Seafood, or Korean Meatball (동그랑땡).",
-        "img": "https://images.unsplash.com/photo-1676874566453-06335e4ae97d?q=80&w=1080"
+        "img": "/image/menu/korean-pancakes.jpg"
       },
       {
         "name": "Japchae",
         "desc": "Sweet and savory stir-fried glass noodles with vegetables and sesame oil.",
-        "img": "https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?q=80&w=1080"
+        "img": "/image/menu/japchae.jpg"
       },
       {
         "name": "Son Mandu",
