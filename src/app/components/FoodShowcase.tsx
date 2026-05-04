@@ -71,8 +71,8 @@ export function FoodShowcase({ selectedMenuItems = [], setSelectedMenuItems }: F
                 </div>
                 <div className="p-4 md:p-6 flex flex-col justify-between gap-2 md:gap-3 flex-1">
                   <div>
-                    <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans] group-hover:text-[#FFCB2F] transition-colors line-clamp-2 md:line-clamp-none">{item.name}</h3>
-                    <p className="font-body text-xs md:text-sm text-[#1A1A1A]/55 mt-1 md:mt-2 leading-relaxed line-clamp-3 md:line-clamp-none">{item.desc}</p>
+                    <h3 className="font-display text-lg md:text-xl font-bold text-[#1A1A1A] font-[Plus_Jakarta_Sans] group-hover:text-[#FFCB2F] transition-colors">{item.name}</h3>
+                    <p className="font-body text-xs md:text-sm text-[#1A1A1A]/55 mt-1 md:mt-2 leading-relaxed">{item.desc}</p>
                   </div>
                   <button
                     onClick={(e) => {

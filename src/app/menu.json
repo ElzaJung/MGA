@@ -29,8 +29,8 @@
         "img": "/image/menu/japchae.jpg"
       },
       {
-        "name": "Son Mandu",
-        "desc": "Hand-made steamed dumplings filled with a seasoned mixture of meat and vegetables.",
+        "name": "Son Mandu (Hand-made steamed dumpling)",
+        "desc": "Steamed dumplings filled with a seasoned mixture of meat and vegetables.",
         "img": "/image/menu/son-mandu.jpg"
       }
     ]
@@ -41,7 +41,7 @@
     "items": [
       {
         "name": "Katsu Bento Box",
-        "desc": "TBD",
+        "desc": "Available in Chicken or Pork.",
         "img": "/image/menu/TBD.png"
       },
       {
@@ -56,7 +56,7 @@
       },
       {
         "name": "Bibimbap",
-        "desc": "Rice bowl with assorted vegetables and egg. Available with Vegetable, Beef, or Spicy Pork.",
+        "desc": "Rice bowl with assorted vegetables and egg. Available with Chicken, Beef, or Spicy Pork.",
         "img": "/image/menu/TBD.png"
       }
     ]
@@ -87,7 +87,7 @@
       },
       {
         "name": "Fried Rice",
-        "desc": "Wok-fried rice. Available in Vegetable, Chicken, Shrimp, or Kimchi flavors.",
+        "desc": "Wok-fried rice. Available with Vegetable, Chicken, Shrimp, or Kimchi.",
         "img": "/image/menu/fried-rice2.png"
       }
     ]
@@ -112,8 +112,18 @@
         "img": "/image/menu/TBD.png"
       },
       {
-        "name": "Bbyu-jjim (Braised Pork Backbone)",
+        "name": "Bbyuhjjim Platter",
         "desc": "Hearty braised pork bone dish seasoned with traditional Korean spices.",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Dalkgalbi",
+        "desc": "",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Dalkdoritang",
+        "desc": "",
         "img": "/image/menu/TBD.png"
       }
     ]
@@ -124,12 +134,12 @@
     "items": [
       {
         "name": "Chicken Katsu Bao Box",
-        "desc": "Signature box of steamed buns stuffed with crispy chicken katsu, veggies and MGA signature sauce.",
+        "desc": "Signature box of steamed buns stuffed with crispy chicken katsu, vegetables and MGA signature sauce.",
         "img": "/image/menu/chicken-katsu.png"
       },
       {
         "name": "Pork Belly Bao Box",
-        "desc": "Signature box of steamed buns stuffed with tender, glazed pork belly, veggies and MGA signature sauce.",
+        "desc": "Signature box of steamed buns stuffed with tender, glazed pork belly, vegetables and MGA signature sauce.",
         "img": "/image/menu/pork-belly.png"
       }
     ]
@@ -140,7 +150,37 @@
     "items": [
       {
         "name": "MGA Chicken Box",
-        "desc": "You can choose 4 flavours from here: Original, Yangnyeom (sweet and spicy), Soy Garlic, Honey Garlic, or Chi Chee. Every chickens is boneless.",
+        "desc": "4 Flavours of Chicken served with a side of Fries",
+        "img": "/image/menu/chickenbox.png"
+      },
+      {
+        "name": "Original Fried Chicken",
+        "desc": "",
+        "img": "/image/menu/chickenbox.png"
+      },
+      {
+        "name": "Yangum Chicken",
+        "desc": "",
+        "img": "/image/menu/chickenbox.png"
+      },
+      {
+        "name": "Soy Garlic Chicken",
+        "desc": "",
+        "img": "/image/menu/chickenbox.png"
+      },
+      {
+        "name": "Honey Garlic Chicken",
+        "desc": "",
+        "img": "/image/menu/chickenbox.png"
+      },
+      {
+        "name": "Chi-chee Chicken",
+        "desc": "",
+        "img": "/image/menu/chickenbox.png"
+      },
+      {
+        "name": "Jalapeño Chicken",
+        "desc": "",
         "img": "/image/menu/chickenbox.png"
       }
     ]
@@ -150,8 +190,23 @@
     "korean": "김밥",
     "items": [
       {
-        "name": "Kimbap",
-        "desc": "Classic Korean seaweed rice rolls. Available in Veggie or savory Bulgogi flavors.",
+        "name": "Tuna Mayo",
+        "desc": "Classic Korean seaweed rice rolls.",
+        "img": "/image/menu/kimbap.jpeg"
+      },
+      {
+        "name": "Cheese",
+        "desc": "Classic Korean seaweed rice rolls.",
+        "img": "/image/menu/kimbap.jpeg"
+      },
+      {
+        "name": "Bulgogi (Beef)",
+        "desc": "Classic Korean seaweed rice rolls.",
+        "img": "/image/menu/kimbap.jpeg"
+      },
+      {
+        "name": "Vegetable",
+        "desc": "Classic Korean seaweed rice rolls.",
         "img": "/image/menu/kimbap.jpeg"
       }
     ]
