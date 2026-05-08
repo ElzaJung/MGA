@@ -47,17 +47,17 @@
       {
         "name": "Bulgogi Bento Box",
         "desc": "TBD",
-        "img": "/image/menu/TBD.png"
+        "img": "/image/menu/bulgogi_bento.jpg"
       },
       {
         "name": "Spicy Pork Bento Box",
         "desc": "TBD.",
-        "img": "/image/menu/TBD.png"
+        "img": "/image/menu/spicy_pork_bento.jpg"
       },
       {
         "name": "Bibimbap",
         "desc": "Rice bowl with assorted vegetables and egg. Available with Chicken, Beef, or Spicy Pork.",
-        "img": "/image/menu/TBD.png"
+        "img": "/image/menu/bibimbap.png"
       }
     ]
   },
@@ -156,38 +156,38 @@
       {
         "name": "Original Fried Chicken",
         "desc": "",
-        "img": "/image/menu/chickenbox.png"
+        "img": "/image/menu/fried_chicken.png"
       },
       {
         "name": "Yangum Chicken",
         "desc": "",
-        "img": "/image/menu/chickenbox.png"
+        "img": "/image/menu/yangyum.png"
       },
       {
         "name": "Soy Garlic Chicken",
         "desc": "",
-        "img": "/image/menu/chickenbox.png"
+        "img": "/image/menu/soy_garlic.png"
       },
       {
         "name": "Honey Garlic Chicken",
         "desc": "",
-        "img": "/image/menu/chickenbox.png"
+        "img": "/image/menu/honey_garlic.png"
       },
       {
         "name": "Chi-chee Chicken",
         "desc": "",
-        "img": "/image/menu/chickenbox.png"
+        "img": "/image/menu/chi_chee.png"
       },
       {
         "name": "Jalapeño Chicken",
         "desc": "",
-        "img": "/image/menu/chickenbox.png"
+        "img": "/image/menu/jalapeno.png"
       }
     ]
   },
   {
-    "category": "Kimbap (Roll Tray)",
-    "korean": "김밥",
+    "category": "Kimbap box",
+    "korean": "김밥 박스",
     "items": [
       {
         "name": "Tuna Mayo",
@@ -208,6 +208,22 @@
         "name": "Vegetable",
         "desc": "Classic Korean seaweed rice rolls.",
         "img": "/image/menu/kimbap.jpeg"
+      }
+    ]
+  },
+  {
+    "category": "HANPAN",
+    "korean": "한판",
+    "items": [
+      {
+        "name": "Bossam",
+        "desc": "",
+        "img": "/image/menu/TBD.png"
+      },
+      {
+        "name": "Jokbal",
+        "desc": "",
+        "img": "/image/menu/TBD.png"
       }
     ]
   }
