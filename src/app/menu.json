@@ -104,17 +104,17 @@
       {
         "name": "Pork Bone Soup Hotpot",
         "desc": "Deep, rich, and spicy broth simmered with tender pork spine and potatoes.",
-        "img": "/image/menu/TBD.png"
+        "img": "/image/menu/porkbone.png"
       },
       {
         "name": "Budaejigae Hotpot",
         "desc": "Army-style stew featuring ham, sausage, spam, beans, and ramen in a spicy broth.",
-        "img": "/image/menu/TBD.png"
+        "img": "/image/menu/budae.png"
       },
       {
         "name": "Bbyuhjjim Platter",
         "desc": "Hearty braised pork bone dish seasoned with traditional Korean spices.",
-        "img": "/image/menu/TBD.png"
+        "img": "/image/menu/jjim.png"
       },
       {
         "name": "Dalkgalbi",
