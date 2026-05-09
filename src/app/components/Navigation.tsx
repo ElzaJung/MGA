@@ -16,17 +16,16 @@ export function Navigation({ selectedMenuItems = [] }: NavigationProps) {
     <nav className="bg-white border-b border-[#1A1A1A]/10 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-end gap-2">
-
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-2xl text-[#1A1A1A] font-bold">MyungGA</span>
+          <Link to="/" className="flex flex-col leading-tight pt-2">
+            <span className="font-display lg:text-2xl text-lg text-[#1A1A1A] font-bold">MyungGA Catering</span>
+            <div className="flex items-center gap-1.5">
               <span className="font-body text-xs text-[#1A1A1A]/50 tracking-wide">Korean Restaurant</span>
+              <img
+                src="/image/injang.png"
+                alt="MyungGA seal"
+                className="w-[15px] h-[15px] object-contain"
+              />
             </div>
-            <img
-              src="/image/injang.png"
-              alt="MyungGA seal"
-              className="w-[19px] h-[19px] object-contain mb-[1px]"
-            />
           </Link>
 
           {/* Desktop Navigation */}

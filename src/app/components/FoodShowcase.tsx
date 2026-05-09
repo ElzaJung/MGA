@@ -67,6 +67,8 @@ export function FoodShowcase({ selectedMenuItems = [], setSelectedMenuItems }: F
                     src={item.img}
                     alt={`${item.name} - ${item.desc} - MyungGa Korean catering menu item`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="p-4 md:p-6 flex flex-col justify-between gap-2 md:gap-3 flex-1">

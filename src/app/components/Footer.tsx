@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div>
           <div className="flex items-end gap-1.5 leading-none">
-            <span className="font-display text-xl font-bold text-white">MyungGA</span>
+            <span className="font-display text-xl font-bold text-white">MyungGA Catering</span>
             <img
               src="/image/injang.png"
               alt="MyungGA seal"

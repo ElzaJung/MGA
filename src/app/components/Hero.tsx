@@ -149,6 +149,8 @@ export function Hero() {
                   alt="MyungGa authentic Korean catering menu item"
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${currentImage === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'
                     }`}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  decoding="async"
                 />
               ))}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FFCB2F] z-20" />
@@ -217,6 +219,8 @@ export function Hero() {
                 alt="MyungGa authentic Korean catering menu item"
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${currentImage === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
             ))}
             {/* Yellow accent border */}
@@ -273,6 +277,8 @@ export function Hero() {
                     src={img}
                     alt={`Gallery image ${idx + 1}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                   />
 
                 </motion.div>
