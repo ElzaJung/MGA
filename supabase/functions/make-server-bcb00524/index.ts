@@ -66,7 +66,7 @@ app.post("/make-server-bcb00524/submit-inquiry", async (c) => {
           },
           body: JSON.stringify({
             from: 'MyungGA Catering <onboarding@resend.dev>',
-            to: 'buza0605@gmail.com',
+            to: 'sunmee0813@gmail.com',
             subject: '🔴🔴🔴 New Catering Inquiry - MyungGA 🔴🔴🔴',
             html: `
               <!DOCTYPE html>
