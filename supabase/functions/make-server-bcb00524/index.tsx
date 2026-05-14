@@ -52,9 +52,10 @@ app.post("/make-server-bcb00524/submit-inquiry", async (c) => {
 
     // Send emails using Resend API
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+    const NOTIFICATION_EMAIL = Deno.env.get('NOTIFICATION_EMAIL');
 
-    if (!RESEND_API_KEY) {
-      console.log('Warning: RESEND_API_KEY not set, skipping email sending');
+    if (!RESEND_API_KEY || !NOTIFICATION_EMAIL) {
+      console.log('Warning: RESEND_API_KEY or NOTIFICATION_EMAIL not set, skipping email sending');
     } else {
       try {
         // Send email to business owner
@@ -65,8 +66,8 @@ app.post("/make-server-bcb00524/submit-inquiry", async (c) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'MyungGA Catering <onboarding@resend.dev>',
-            to: 'sunmee0813@gmail.com',
+            from: 'MyungGA Catering <contact@myungga.ca>',
+            to: NOTIFICATION_EMAIL,
             subject: '🔴🔴🔴 New Catering Inquiry - MyungGA 🔴🔴🔴',
             html: `
               <!DOCTYPE html>
@@ -89,7 +90,7 @@ app.post("/make-server-bcb00524/submit-inquiry", async (c) => {
                               <tr>
                                 <td>
                                   <p style="margin: 0 0 6px; color: #1A1A1A; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">MyungGA Catering</p>
-                                  <p style="margin: 10px 0 0; color: #1A1A1A; opacity: 0.75; font-size: 13px;">Received ${new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' })}</p>
+                                  <p style="margin: 10px 0 0; color: #1A1A1A; opacity: 0.75; font-size: 13px;">Received ${new Date().toLocaleString('en-US', { timeZone: 'America/Toronto', dateStyle: 'full', timeStyle: 'short' })}</p>
                                 </td>
                               </tr>
                             </table>
